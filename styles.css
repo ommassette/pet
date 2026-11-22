@@ -1,0 +1,936 @@
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --green: #1e7a4f;
+      --green-dark: #16603d;
+      --ink: #0f1e17;
+      --muted: #5a6b62;
+      --soft-green: #f1f8f3;
+    }
+
+    body {
+      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      background: #ffffff;
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ---------- Navbar ---------- */
+    .navbar {
+      background: var(--green);
+      padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 76px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: "League Spartan", sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      justify-self: start;
+    }
+
+    .logo span {
+      color: #a8e6c0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      justify-self: center;
+    }
+
+    .nav-links a {
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 500;
+      position: relative;
+      padding: 6px 0;
+      opacity: 0.92;
+      transition: opacity 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: #ffffff;
+      border-radius: 2px;
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      justify-self: end;
+      background: #ffffff;
+      color: var(--green);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 11px 22px;
+      border-radius: 999px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      background: var(--soft-green);
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      background: #ffffff;
+      padding: 88px 24px 104px;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-family: "League Spartan", sans-serif;
+      font-size: clamp(3.2rem, 7vw, 5.75rem); /* increased size */
+      font-weight: 700;
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 40px;
+    }
+
+    /* ---------- Outlined CTA with left-to-right slide fill ---------- */
+    .btn-outline {
+      position: relative;
+      isolation: isolate; /* keeps the fill layer behind the text only */
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--green);
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 15px 32px;
+      border-radius: 999px;
+      border: 2px solid var(--green);
+      cursor: pointer;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+
+    /* the sliding fill */
+    .btn-outline::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--green);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.38s cubic-bezier(0.65, 0, 0.35, 1);
+      z-index: -1; /* sits behind the label + arrow */
+    }
+
+    .btn-outline:hover {
+      color: #ffffff;
+    }
+
+    .btn-outline:hover::before {
+      transform: scaleX(1);
+    }
+
+    .btn-outline svg {
+      transition: transform 0.3s ease;
+    }
+
+    .btn-outline:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* ---------- Right: image ---------- */
+    .hero-media {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-media::before {
+      content: "";
+      position: absolute;
+      width: 88%;
+      aspect-ratio: 1;
+      background: var(--soft-green);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .hero-media img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 540px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 24px 40px rgba(15, 30, 23, 0.12));
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      .nav-inner {
+        grid-template-columns: 1fr auto;
+        height: 70px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 64px 20px 80px;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        text-align: center;
+      }
+
+      .hero-media {
+        order: -1;
+      }
+
+      .hero-media img {
+        max-width: 380px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn-outline {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+
+/* ================= ABOUT ================= */
+
+.about {
+  background: #ffffff; /* keeps the area above the mountains white */
+}
+
+/* --- Layered mountain divider --- */
+.about-mountain {
+  line-height: 0;
+}
+
+.about-mountain svg {
+  display: block;
+  width: 100%;
+  height: 220px;
+}
+
+/* --- Green body (full-height section) --- */
+.about-body {
+  background: var(--green, #1e7a4f);
+  min-height: 70vh;               /* makes it a full section, not a strip */
+  padding: 40px 24px 120px;
+  display: flex;
+  align-items: center;
+}
+
+.about-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* --- Left: cat image --- */
+.about-media {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-media::before {
+  content: "";
+  position: absolute;
+  width: 85%;
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.about-media img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.18));
+}
+
+/* --- Right: about text --- */
+.about-text h2 {
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 46ch;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .about-mountain svg {
+    height: 120px;
+  }
+
+  .about-body {
+    min-height: auto;
+    padding: 24px 20px 80px;
+  }
+
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    text-align: center;
+  }
+
+  .about-media img {
+    max-width: 340px;
+  }
+
+  .about-text p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.about-mountain svg {
+  display: block;
+  width: 100%;
+  height: 220px;
+  margin-bottom: -2px;   /* pull the green body up over the seam */
+}
+
+.about-body {
+  background: var(--green, #1e7a4f);
+  min-height: 70vh;
+  padding: 40px 24px 120px;
+  display: flex;
+  align-items: center;
+  margin-top: -2px;      /* overlaps the SVG, kills the white line */
+  position: relative;    /* ensures it paints above the SVG edge */
+  z-index: 1;
+}
+@media (max-width: 900px) {
+  .about-mountain svg {
+    height: 120px;
+    margin-bottom: -2px;
+  }
+
+  .about-body {
+    margin-top: -2px;
+    /* ...rest stays the same... */
+  }
+}
+
+/* ============================================================
+   GLOBAL: kill sub-pixel white seams between SVGs and sections
+   ============================================================ */
+
+/* Any section that follows a divider sits on top and overlaps it */
+.divider-after {
+  position: relative;
+  z-index: 1;
+  margin-top: -2px;          /* overlaps the SVG bottom */
+  background-clip: padding-box;
+}
+
+/* Divider wrappers never leave stray gaps */
+.divider {
+  line-height: 0;
+  font-size: 0;
+  display: block;
+}
+
+.divider svg {
+  display: block;
+  width: 100%;
+  margin-bottom: -2px;       /* pulls next section up over the seam */
+  vertical-align: top;
+  shape-rendering: geometricPrecision;
+}
+
+/* ================= SERVICES ================= */
+
+.services {
+  background: #ffffff;
+}
+
+.services-divider svg {
+  height: 140px;
+}
+
+.services-body {
+  padding: 40px 24px 100px;
+}
+
+.services-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services-header {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 56px;
+}
+
+.services-header h2 {
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink, #0f1e17);
+  margin-bottom: 14px;
+}
+
+.services-header p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--muted, #5a6b62);
+}
+
+/* ---- Grid ---- */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* ---- Card base (link) ---- */
+.service-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 32px;
+  border-radius: 28px;
+  background: var(--soft-green, #f1f8f3);
+  border: 2px solid var(--green, #1e7a4f);
+  color: var(--ink, #0f1e17);
+  text-decoration: none;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Sliding fill (exactly like hero CTA) */
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--green, #1e7a4f);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.38s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 0;
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Keep content above the fill */
+.service-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hover text + icon colours */
+.service-card:hover {
+  color: #ffffff;
+}
+
+.service-card:hover .service-icon i,
+.service-card:hover .service-content h3,
+.service-card:hover .service-content p {
+  color: #ffffff;
+}
+
+/* Icon (no background) */
+.service-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-icon i {
+  font-size: 2.5rem;
+  color: var(--green, #1e7a4f);
+  transition: color 0.3s ease;
+}
+
+/* Content */
+.service-content h3 {
+  font-family: "League Spartan", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  color: var(--ink, #0f1e17);
+  transition: color 0.3s ease;
+}
+
+.service-content p {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--muted, #5a6b62);
+  transition: color 0.3s ease;
+}
+
+/* ============================================================
+   JIGSAW LAYOUT — desktop only
+   4 cols × 3 rows.  1 = wide, 2 & 3 = tall
+   ============================================================ */
+@media (min-width: 901px) {
+  .services-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(220px, auto);
+    gap: 20px;
+  }
+
+  .service-card:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 2; } /* wide */
+  .service-card:nth-child(2) { grid-column: 3 / 4; grid-row: 1 / 3; } /* tall */
+  .service-card:nth-child(3) { grid-column: 4 / 5; grid-row: 1 / 3; } /* tall */
+  .service-card:nth-child(4) { grid-column: 1 / 3; grid-row: 2 / 3; } /* wide */
+  .service-card:nth-child(5) { grid-column: 1 / 3; grid-row: 3 / 4; } /* wide */
+  .service-card:nth-child(6) { grid-column: 3 / 5; grid-row: 3 / 4; } /* wide */
+
+  /* Tall cards: icon top, text bottom */
+  .service-card:nth-child(2),
+  .service-card:nth-child(3) {
+    justify-content: space-between;
+  }
+
+  /* Wide cards: icon left, text right */
+  .service-card:nth-child(1),
+  .service-card:nth-child(4),
+  .service-card:nth-child(5),
+  .service-card:nth-child(6) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 28px;
+  }
+
+  .service-card:nth-child(1) .service-content,
+  .service-card:nth-child(4) .service-content,
+  .service-card:nth-child(5) .service-content,
+  .service-card:nth-child(6) .service-content {
+    flex: 1;
+  }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .services-divider svg { height: 100px; }
+  .services-body { padding: 24px 20px 80px; }
+}
+/* ================= FOOTER ================= */
+
+.footer {
+  background: var(--green, #1e7a4f);
+  color: #ffffff;
+  padding: 80px 24px 40px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Top: two columns */
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* --- Left: Visit Us --- */
+.footer-visit h2 {
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(1.6rem, 2.4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.footer-address {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 28px;
+}
+
+.footer-contact {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-contact li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.footer-contact i {
+  font-size: 1.05rem;
+  color: #a8e6c0;
+}
+
+/* --- Right: links --- */
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 18px;
+  padding-top: 6px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  padding: 2px 0;
+  transition: color 0.2s ease;
+}
+
+.footer-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: width 0.25s ease;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
+.footer-links a:hover::after {
+  width: 100%;
+}
+
+/* --- Bottom: brand --- */
+.footer-bottom {
+  padding-top: 36px;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-brand {
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .footer {
+    padding: 56px 20px 32px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+  }
+
+  .footer-links {
+    align-items: flex-start;
+  }
+}
+/* ================= TESTIMONIALS ================= */
+
+.testimonials {
+  background: #ffffff;
+  padding: 100px 24px;
+}
+
+.testimonials-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Slides */
+.testimonial-slide {
+  display: none;
+}
+
+.testimonial-slide.active {
+  display: block;
+}
+
+.testimonial-slide p {
+  font-family: "League Spartan", sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink, #0f1e17);
+  margin-bottom: 28px;
+}
+
+.testimonial-author {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--muted, #5a6b62);
+  font-style: normal;
+}
+
+/* Manual controls */
+.testimonial-controls {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.testimonial-btn {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 2px solid var(--green, #1e7a4f);
+  background: transparent;
+  color: var(--green, #1e7a4f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.testimonial-btn:hover {
+  background: var(--green, #1e7a4f);
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .testimonials {
+    padding: 72px 20px;
+  }
+
+  .testimonial-controls {
+    margin-top: 36px;
+  }
+
+  .testimonial-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 1.1rem;
+  }
+}
+
+/* ================= CUSTOM PAW CURSOR ================= */
+
+@media (hover: hover) and (pointer: fine) {
+
+  /* Default paw (outline) */
+  *,
+  *::before,
+  *::after {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg fill='%23ffffff' stroke='%231e1e1e' stroke-width='1.6' stroke-linejoin='round'%3E%3Cellipse cx='16' cy='21' rx='7' ry='6'/%3E%3Cellipse cx='7' cy='13' rx='3' ry='4'/%3E%3Cellipse cx='13' cy='8' rx='3' ry='4'/%3E%3Cellipse cx='19' cy='8' rx='3' ry='4'/%3E%3Cellipse cx='25' cy='13' rx='3' ry='4'/%3E%3C/g%3E%3C/svg%3E") 16 21, auto !important;
+  }
+
+  /* Interactive paw (filled green) */
+  a,
+  button,
+  [role="button"],
+  .btn-outline,
+  .nav-cta,
+  .service-card,
+  .testimonial-btn,
+  .footer-links a,
+  .nav-links a,
+  .logo {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg fill='%231e7a4f' stroke='%23ffffff' stroke-width='1.6' stroke-linejoin='round'%3E%3Cellipse cx='16' cy='21' rx='7' ry='6'/%3E%3Cellipse cx='7' cy='13' rx='3' ry='4'/%3E%3Cellipse cx='13' cy='8' rx='3' ry='4'/%3E%3Cellipse cx='19' cy='8' rx='3' ry='4'/%3E%3Cellipse cx='25' cy='13' rx='3' ry='4'/%3E%3C/g%3E%3C/svg%3E") 16 21, pointer !important;
+  }
+
+  /* Keep text selectable with a text caret */
+  p, h1, h2, h3, h4, h5, h6, li, blockquote, span {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg fill='%23ffffff' stroke='%231e1e1e' stroke-width='1.6' stroke-linejoin='round'%3E%3Cellipse cx='16' cy='21' rx='7' ry='6'/%3E%3Cellipse cx='7' cy='13' rx='3' ry='4'/%3E%3Cellipse cx='13' cy='8' rx='3' ry='4'/%3E%3Cellipse cx='19' cy='8' rx='3' ry='4'/%3E%3Cellipse cx='25' cy='13' rx='3' ry='4'/%3E%3C/g%3E%3C/svg%3E") 16 21, auto !important;
+  }
+}
+
+/* ================= STICKY REACH OUT ================= */
+
+.reach-out {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 90;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 22px 16px 18px;
+
+  background: var(--green, #1e7a4f);
+  color: #ffffff;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+
+  border-radius: 999px 0 0 999px;
+  border: 2px solid var(--green, #1e7a4f);
+  border-right: none;
+
+  /* sliding fill prep */
+  position: fixed;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.3s ease, border-color 0.3s ease,
+              padding 0.3s ease, background 0.3s ease;
+}
+
+/* sliding WhatsApp-green fill, same language as hero CTA */
+.reach-out::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #25d366; /* WhatsApp green */
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.38s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 0;
+}
+
+.reach-out:hover::before {
+  transform: scaleX(1);
+}
+
+.reach-out > * {
+  position: relative;
+  z-index: 1;
+}
+
+.reach-out:hover {
+  border-color: #25d366;
+  padding-right: 28px;
+}
+
+.reach-out-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.reach-out:hover .reach-out-icon {
+  transform: rotate(-8deg) scale(1.1);
+}
+
+.reach-out-text {
+  white-space: nowrap;
+}
+
+/* ---- Mobile: shrink to a round icon button ---- */
+@media (max-width: 640px) {
+  .reach-out {
+    padding: 14px;
+    border-radius: 999px;
+    right: 16px;
+    font-size: 0;
+    gap: 0;
+  }
+
+  .reach-out-icon {
+    font-size: 1.35rem;
+  }
+
+  .reach-out-text {
+    display: none;
+  }
+}

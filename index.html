@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PawCare — Veterinary Clinic</title>
+
+  <!-- Fonts: Plus Jakarta Sans + League Spartan -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+/>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo">Paw<span>Care</span></a>
+
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Services</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+
+      <a href="#" class="nav-cta">Book a Visit</a>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero-inner">
+      <!-- Left: short text + outlined CTA -->
+      <div class="hero-text">
+        <h1>Healthy pets,<br />happy hearts.</h1>
+
+        <a href="#" class="btn-outline">
+          Book an Appointment
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+               stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Right: dog image -->
+      <div class="hero-media">
+        <img src="dog.png" alt="Happy healthy dog" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="about">
+    <!-- Mountain-shaped divider (layered, smoother) -->
+    <div class="about-mountain divider" aria-hidden="true">
+      <svg viewBox="0 0 1440 220" preserveAspectRatio="none">
+        <!-- Back layer (lighter green) for depth -->
+        <path
+          d="M0,220 L0,80 C200,80 280,10 480,50 C680,90 760,30 960,60 C1160,90 1260,50 1440,80 L1440,220 Z"
+          fill="#2c9a63"></path>
+        <!-- Front layer (matches navbar green) -->
+        <path
+          d="M0,220 L0,130 C240,130 320,50 540,80 C760,110 820,60 1040,90 C1260,120 1320,110 1440,130 L1440,220 Z"
+          fill="#1e7a4f"></path>
+      </svg>
+    </div>
+
+    <!-- Green body (full-height section) -->
+    <div class="about-body divider-after">
+      <div class="about-inner">
+        <!-- LEFT: cat image -->
+        <div class="about-media">
+          <img src="cat.png" alt="Cat at PawCare" />
+        </div>
+
+        <!-- RIGHT: about text -->
+        <div class="about-text">
+          <h2>About PawCare</h2>
+          <p>
+            Gentle, expert care for the pets you love. Our team blends modern
+            medicine with genuine compassion — because your pet deserves both.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- ================= SERVICES ================= -->
+<section class="services">
+  <!-- Green hanging down from previous green section -->
+  <div class="services-divider divider divider-after" aria-hidden="true">
+    <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
+      <path
+        d="M0,0 L1440,0 L1440,50 C1260,110 1140,40 960,80 C780,120 660,50 480,80 C300,110 180,50 0,90 Z"
+        fill="#1e7a4f"></path>
+    </svg>
+  </div>
+
+  <div class="services-body">
+    <div class="services-inner">
+      <div class="services-header">
+        <h2>Our Services</h2>
+        <p>Comprehensive care for every stage of your pet's life.</p>
+      </div>
+
+      <!-- Jigsaw grid: 4 wide + 2 tall cards (all links) -->
+      <div class="services-grid">
+        <!-- 1 · wide -->
+        <a href="#" class="service-card">
+          <div class="service-icon"><i class="bi bi-heart-pulse"></i></div>
+          <div class="service-content">
+            <h3>Wellness Exams</h3>
+            <p>Annual checkups and preventive care to keep your pet healthy all year.</p>
+          </div>
+        </a>
+
+        <!-- 2 · tall -->
+        <a href="#" class="service-card">
+          <div class="service-icon"><i class="bi bi-bandaid"></i></div>
+          <div class="service-content">
+            <h3>Surgery</h3>
+            <p>Advanced surgical care with modern equipment and experienced hands.</p>
+          </div>
+        </a>
+
+        <!-- 3 · tall -->
+        <a href="#" class="service-card">
+          <div class="service-icon"><i class="bi bi-emoji-smile"></i></div>
+          <div class="service-content">
+            <h3>Dental Care</h3>
+            <p>Cleanings, extractions, and complete oral health for a brighter smile.</p>
+          </div>
+        </a>
+
+        <!-- 4 · wide -->
+        <a href="#" class="service-card">
+          <div class="service-icon"><i class="bi bi-shield-plus"></i></div>
+          <div class="service-content">
+            <h3>Vaccinations</h3>
+            <p>Core and lifestyle vaccines tailored to your pet's unique needs.</p>
+          </div>
+        </a>
+
+        <!-- 5 · wide -->
+        <a href="#" class="service-card">
+          <div class="service-icon"><i class="bi bi-exclamation-triangle"></i></div>
+          <div class="service-content">
+            <h3>Emergency Care</h3>
+            <p>Urgent care when every second counts — we're here around the clock.</p>
+          </div>
+        </a>
+
+        <!-- 6 · wide -->
+        <a href="#" class="service-card">
+          <div class="service-icon"><i class="bi bi-egg-fried"></i></div>
+          <div class="service-content">
+            <h3>Nutrition</h3>
+            <p>Personalized diet plans for every stage and lifestyle of your pet.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================= TESTIMONIALS ================= -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+
+    <div class="testimonial-slider" id="testimonialSlider">
+      <!-- Slide 1 -->
+      <blockquote class="testimonial-slide active">
+        <p>“PawCare treated our dog like family. The care and attention we received was unmatched.”</p>
+        <footer class="testimonial-author">Sarah Mitchell</footer>
+      </blockquote>
+
+      <!-- Slide 2 -->
+      <blockquote class="testimonial-slide">
+        <p>“Professional, compassionate, and always available. We wouldn't trust anyone else with our pets.”</p>
+        <footer class="testimonial-author">James Carter</footer>
+      </blockquote>
+
+      <!-- Slide 3 -->
+      <blockquote class="testimonial-slide">
+        <p>“From routine checkups to emergency visits, PawCare has been there every step of the way.”</p>
+        <footer class="testimonial-author">Emily Rodriguez</footer>
+      </blockquote>
+    </div>
+
+    <!-- Manual carousel controls -->
+    <div class="testimonial-controls">
+      <button class="testimonial-btn" id="prevTestimonial" aria-label="Previous testimonial">
+        <i class="bi bi-arrow-left"></i>
+      </button>
+      <button class="testimonial-btn" id="nextTestimonial" aria-label="Next testimonial">
+        <i class="bi bi-arrow-right"></i>
+      </button>
+    </div>
+
+  </div>
+</section>
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <!-- LEFT: Visit Us + address + contact info -->
+      <div class="footer-visit">
+        <h2>Visit Us</h2>
+
+        <p class="footer-address">
+          123 Maple Street<br />
+          Springfield, IL 62704<br />
+          United States
+        </p>
+
+        <ul class="footer-contact">
+          <li><i class="bi bi-telephone"></i> (555) 123‑4567</li>
+          <li><i class="bi bi-envelope"></i> hello@pawcare.com</li>
+          <li><i class="bi bi-clock"></i> Mon–Sat · 8am – 6pm</li>
+        </ul>
+      </div>
+
+      <!-- RIGHT: links -->
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="#">Services</a>
+        <a href="#">about</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+
+    <!-- BELOW: company title -->
+    <div class="footer-bottom">
+      <p class="footer-brand">PawCare</p>
+    </div>
+  </div>
+</footer>
+<!-- ================= STICKY REACH OUT ================= -->
+<a
+  href="https://wa.me/15551234567"
+  target="_blank"
+  rel="noopener"
+  class="reach-out"
+  aria-label="Reach out on WhatsApp"
+>
+  <span class="reach-out-icon"><i class="bi bi-whatsapp"></i></span>
+  <span class="reach-out-text">Reach Out</span>
+</a>
+<script src="script.js"></script>
+
+</body>
+</html>
